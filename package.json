@@ -1,11 +1,4 @@
 {
-  "name": "braintree-appbase-integration",
-  "version": "0.1",
-  "description": "Braintree subscription managemanet using Appbase",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/yashshah/braintree-appbase-integration.git"
-  },
   "scripts": {
     "start": "webpack-dev-server --config webpack-dev-server.config.js --progress --inline --colors",
     "build": "webpack --config webpack-production.config.js --progress --colors"
