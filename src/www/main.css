@@ -6,11 +6,14 @@ body {
   font-family: 'Open Sans', sans-serif;
 }
 
-html, body, .row {
+html, body, .container {
     height: 100%;
 }
-.row {
+.container {
     display:flex;
     justify-content: center;
     align-items: center;
+}
+.row{
+	width: 100%;
 }
