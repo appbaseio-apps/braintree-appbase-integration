@@ -1,0 +1,24 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+
+body {
+  background-color: #34495e;
+  font-family: 'Open Sans', sans-serif;
+}
+
+html, body, .container {
+    height: 100%;
+}
+.container {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+.row{
+	width: 100%;
+}
+
+#sliderValue{
+	margin-top: 10px !important;
+	padding-bottom: 150px;
+}
