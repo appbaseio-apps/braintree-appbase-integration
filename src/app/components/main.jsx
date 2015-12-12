@@ -6,6 +6,25 @@ const Slider = require('material-ui/lib/slider');
 const Main = React.createClass({
 
 	getInitialState: function() {
+		toastr.options = {
+		  "closeButton": false,
+		  "debug": false,
+		  "newestOnTop": false,
+		  "progressBar": false,
+		  "positionClass": "toast-bottom-center",
+		  "preventDuplicates": false,
+		  "showDuration": "300",
+		  "hideDuration": "1000",
+		  "timeOut": "5000",
+		  "extendedTimeOut": "1000",
+		  "showEasing": "swing",
+		  "hideEasing": "linear",
+		  "showMethod": "fadeIn",
+		  "hideMethod": "fadeOut"
+		}
+		toastr.options.onclick = function () {
+			window.open("http://www.braintreepayments.com");
+		}
 		return {
 			sliderValue:'10k APIs',
 			plan: 'Free Plan',
@@ -65,6 +84,7 @@ const Main = React.createClass({
                 xhr.setRequestHeader( "Authorization", "Basic " + btoa("RweqvQFhv" + ":" + "9e57af31-90fd-4f09-b06d-8c3c2a53ca76"));
             },
             success: function( response ) {
+	    		toastr.success('Plan has been updated! It can be viewed here: braintreepayments.com')
                 console.log(response)
             }
 		} );
