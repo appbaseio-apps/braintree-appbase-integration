@@ -56,7 +56,7 @@ const Main = React.createClass({
 		this.updatePricing(value*100000000)
 	},
 	updateBraintreePlan: function(event){
-	    Materialize.toast('Webhooks Triggered. Request to the server made.', 6000)
+	    Materialize.toast('Webhook Triggered. Request to the server made.', 6000)
 		let value = this.state.sliderValueUnformated
 		jQuery.ajax( {
             url: 'https://scalr.api.appbase.io/braintree/test/1',
