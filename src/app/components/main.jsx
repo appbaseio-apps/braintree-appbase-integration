@@ -66,7 +66,7 @@ const Main = React.createClass({
                 xhr.setRequestHeader( "Authorization", "Basic " + btoa("RweqvQFhv" + ":" + "9e57af31-90fd-4f09-b06d-8c3c2a53ca76"));
             },
             success: function( response ) {
-	    		let toastContent = 'Plan has been updated! It can be viewed on your dashboard here: <a href="braintreepayments.com"> &nbsp; braintreepayments.com </a>'
+	    		let toastContent = 'Plan has been updated! It can be viewed on your dashboard here: <a href="http://braintreepayments.com"> &nbsp; braintreepayments.com </a>'
 	    		Materialize.toast(toastContent, 8000)
                 console.log(response)
             }
