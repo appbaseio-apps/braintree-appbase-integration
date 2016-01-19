@@ -63,7 +63,7 @@ const Main = React.createClass({
             type: 'PUT',
             data: '{ "count": '+value+'}',
             beforeSend : function( xhr ) {
-                xhr.setRequestHeader( "Authorization", "Basic " + btoa("RweqvQFhv" + ":" + "9e57af31-90fd-4f09-b06d-8c3c2a53ca76"));
+                xhr.setRequestHeader( "Authorization", "Basic " + btoa("zgtIpZtbi" + ":" + "ab8129e0-e47e-4ab5-a1a9-58fd3583509b"));
             },
             success: function( response ) {
 	    		let toastContent = 'Plan has been updated! It can be viewed on your dashboard here: <a href="http://braintreepayments.com"> &nbsp; braintreepayments.com </a>'
