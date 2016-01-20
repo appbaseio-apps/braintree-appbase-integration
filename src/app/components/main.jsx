@@ -5,6 +5,7 @@ const Slider = require('material-ui/lib/slider');
 
 const Main = React.createClass({
 
+	// Set the Initial plan as Free plan
 	getInitialState: function() {
 		return {
 			sliderValue:'10k APIs',
@@ -12,6 +13,8 @@ const Main = React.createClass({
 			sliderValueUnformated: 0 
 		};
 	},
+
+	// Format number to K,M reference
 	numberFormater: function(value){
 		if (value >= 1000000) {
 	       return (value / 1000000).toFixed(0) + 'M';
@@ -21,6 +24,19 @@ const Main = React.createClass({
 	    }
 	    return value;
 	},
+
+	// Update the value of API calls as slider moves
+	updateSliderValue: function(event,value){
+		this.setState({
+			sliderValue: this.numberFormater(value*100000000)
+		});
+		this.setState({
+			sliderValueUnformated:value*100000000
+		});
+		this.updatePricing(value*100000000)
+	},
+
+	// Set the plan name based on the value of API call
 	updatePricing: function(value){
 		let newPlan = ''
 		if (value >= 100000000) {
@@ -46,15 +62,8 @@ const Main = React.createClass({
 	    });
 
 	},
-	updateSliderValue: function(event,value){
-		this.setState({
-			sliderValue: this.numberFormater(value*100000000)
-		});
-		this.setState({
-			sliderValueUnformated:value*100000000
-		});
-		this.updatePricing(value*100000000)
-	},
+
+	// Update the API call value in Appbase
 	updateBraintreePlan: function(event){
 	    Materialize.toast('Webhook Triggered. Request to the server made.', 6000)
 		let value = this.state.sliderValueUnformated
@@ -77,6 +86,7 @@ const Main = React.createClass({
 			<div className="row">
 				<div className="col s12 center white-text"><h1>Select the number of API calls</h1></div>
 				<div className="col s10" id="slider">
+					// We update the pricing plan only when the drag stops
 					<Slider name="slider1" step={0.00000001} defaultValue={0.0001} onChange={this.updateSliderValue} onDragStop={this.updateBraintreePlan}/>
 				</div>
 				<div className="col s2 center white-text vertical-center"><h4 id="sliderValue">{this.state.sliderValue}</h4></div>
