@@ -2,6 +2,14 @@
 
 import React from 'react';
 const Slider = require('material-ui/lib/slider');
+const Appbase = require('appbase-js');
+
+let appbaseRef = new Appbase({
+  url: 'https://scalr.api.appbase.io',
+  appname: 'braintree',
+  username: 'zgtIpZtbi',
+  password: 'ab8129e0-e47e-4ab5-a1a9-58fd3583509b'
+});
 
 const Main = React.createClass({
 
@@ -67,19 +75,21 @@ const Main = React.createClass({
 	updateBraintreePlan: function(event){
 	    Materialize.toast('Webhook Triggered. Request to the server made.', 6000)
 		let value = this.state.sliderValueUnformated
-		jQuery.ajax( {
-            url: 'https://scalr.api.appbase.io/braintree/test/1',
-            type: 'PUT',
-            data: '{ "count": '+value+'}',
-            beforeSend : function( xhr ) {
-                xhr.setRequestHeader( "Authorization", "Basic " + btoa("zgtIpZtbi" + ":" + "ab8129e0-e47e-4ab5-a1a9-58fd3583509b"));
-            },
-            success: function( response ) {
-	    		let toastContent = 'Plan has been updated! It can be viewed on your dashboard here: <a href="http://braintreepayments.com"> &nbsp; braintreepayments.com </a>'
-	    		Materialize.toast(toastContent, 8000)
-                console.log(response)
-            }
-		} );
+
+        let jsonObject = {
+        	"count": value
+        }
+		appbaseRef.index({
+		    type: 'test',
+		    id: '1',
+		    body: jsonObject
+		}).on('data', function(response) {
+    		let toastContent = 'Plan has been updated! It can be viewed on your dashboard here: <a href="http://braintreepayments.com"> &nbsp; braintreepayments.com </a>'
+    		Materialize.toast(toastContent, 8000)
+		    console.log(response);
+		}).on('error', function(error) {
+		    console.log(error);
+		});
 	},
 	render: function(){
 		return (
