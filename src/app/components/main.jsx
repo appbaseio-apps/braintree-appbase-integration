@@ -96,7 +96,6 @@ const Main = React.createClass({
 			<div className="row">
 				<div className="col s12 center white-text"><h1>Select the number of API calls</h1></div>
 				<div className="col s10" id="slider">
-					// We update the pricing plan only when the drag stops
 					<Slider name="slider1" step={0.00000001} defaultValue={0.0001} onChange={this.updateSliderValue} onDragStop={this.updateBraintreePlan}/>
 				</div>
 				<div className="col s2 center white-text vertical-center"><h4 id="sliderValue">{this.state.sliderValue}</h4></div>
